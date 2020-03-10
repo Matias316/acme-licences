@@ -1,0 +1,19 @@
+{
+  "name": "acme-licences",
+  "version": "1.0.0",
+  "description": "Acme licences",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Matias316/acme-licences.git"
+  },
+  "author": "Matias Antiñanco <matias.antinanco@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Matias316/acme-licences/issues"
+  },
+  "homepage": "https://github.com/Matias316/acme-licences#readme"
+}
