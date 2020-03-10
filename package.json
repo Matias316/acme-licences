@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Matias316/acme-licences/issues"
   },
-  "homepage": "https://github.com/Matias316/acme-licences#readme"
+  "homepage": "https://github.com/Matias316/acme-licences#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
