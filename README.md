@@ -1,6 +1,14 @@
 # acme-licences
-Acme bros pictures music licenses
-This application requires MongoDB and Node.js installed:
+Acme bros pictures music licenses is a tool to track the songs licenses in movies
 
-https://www.mongodb.com/download-center
+This application requires Node.js installed:
+
 https://nodejs.org/en/
+
+# Usage
+
+
+
+
+
+
