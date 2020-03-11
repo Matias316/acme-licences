@@ -15,4 +15,10 @@ getAll(req, res) {
   .catch(error => res.status(400).send(error));
 }
 
+/*TODO
+update();
+delete();
+*/
+
+
 };

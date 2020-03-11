@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Song = sequelize.define("song", {
+    const Movie = sequelize.define("movie", {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -8,17 +8,18 @@ module.exports = (sequelize, DataTypes) => {
       title: {
         type: DataTypes.STRING
       },
-      duration: {
-        type: DataTypes.INTEGER
-      },
-      owner: {
+      genre: {
         type: DataTypes.STRING
       }
     });
   
-    Song.associate = (models) => {
-      Song.hasMany(models.track);
+    Movie.associate = (models) => {
+      Movie.hasMany(models.track);
     };
 
-    return Song;
+    Movie.associate = (models) => {
+      Movie.hasMany(models.movie-scene);
+    };
+
+    return Movie;
   };
