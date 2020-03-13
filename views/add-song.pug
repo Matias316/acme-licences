@@ -1,0 +1,17 @@
+extends layout
+
+block content
+
+  div.container
+    h2 Add Song
+
+    div.content
+    form#formAddSong(name="addsong",method="post",action="/api/songs")
+        p
+            input#title.form-control(type='text', name='title', placeholder='Title')
+        p
+            input#duration.form-control(type='text', name='duration', placeholder='Duration')
+        p
+            input#owner.form-control(type='text', name='owner', placeholder='Owner')
+        p
+            button.btn.btn-primary(type="submit") Add Song

@@ -1,44 +1,42 @@
-const Track = require("../models").Track;
+const TrackEventStatus = require("../models").TrackEventStatus;
 module.exports = {
   create(req, res) {
-  return Track.create({ 
-    songStartTime: req.body.songStartTime,
-    songEndTime: req.body.songEndTime,
-    movieId: req.body.movieId,
-    songId: req.body.songId
+  return TrackEventStatus.create({ 
+    type: req.body.type
   })
-  .then(track => res.status(201).send(track))
+  
+  .then(trackEventStatus => res.status(201).send(trackEventStatus))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
-  Track.findAll()
-  .then(tracks => res.send(tracks))
+  TrackEventStatus.findAll()
+  .then(trackEventStatuses => res.send(trackEventStatuses))
   .catch(error => res.status(400).send(error));
 },
 
 getById(req, res) {
   const id = req.params.id;
 
-  Track.findByPk(id)
-  .then(track => res.send(track))
+  TrackEventStatus.findByPk(id)
+  .then(trackEventStatus => res.send(trackEventStatus))
   .catch(error => res.status(400).send(error));
 },
 
 update(req, res) {
   const id = req.params.id;
 
-  Track.update(req.body, {
+  TrackEventStatus.update(req.body, {
       where: { id: id }
     })
   .then(num => {
       if (num == 1) {
         res.send({
-          message: "Track updated successfully."
+          message: "TrackEventStatus updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Track with id=${id}.`
+          message: `Cannot update TrackEventStatus with id=${id}.`
         });
       }
     })
@@ -48,17 +46,17 @@ update(req, res) {
 delete(req, res) {
   const id = req.params.id;
 
-  Track.destroy( {
+  TrackEventStatus.destroy( {
       where: { id: id }
     })
   .then(num => {
       if (num == 1) {
         res.send({
-          message: "Track deleted successfully."
+          message: "TrackEventStatus deleted successfully."
         });
       } else {
         res.send({
-          message: `Cannot delete Track with id=${id}.`
+          message: `Cannot delete TrackEventStatus with id=${id}.`
         });
       }
     })

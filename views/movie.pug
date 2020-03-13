@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  div.container
+    h2 Acme-Licenses - Movies
+    div.content
+      table.table
+        a.btn.btn-primary( href="/api/movies" ) Add Movie
+        thead
+          tr
+            th Title
+            th Genre            
+            th Actions
+        tbody
+            each movie, i in movies
+              tr
+                td #{movie.title}
+                td #{movie.genre}
+                td 
+                  a.btn.btn-primary( href="/updateMovie/" + movie.id ) Update
+                  a.btn.btn-primary( href="/deleteMovie/" + movie.id ) Delete 

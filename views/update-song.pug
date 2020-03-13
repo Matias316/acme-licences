@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  div.container
+    h2 Update Song
+
+    div.content
+    //- TODO methods different to get/post not working on form.!! 
+    form#formUpdateSong(name="updatesong",method="put",action="/api/songs/" + song.id)
+        p
+            input#title.form-control(type='text', name='title', value=song.title)
+        p
+            input#duration.form-control(type='text', name='duration', value=song.duration)
+        p
+            input#owner.form-control(type='text', name='owner', value=song.owner)
+        p
+            button.btn.btn-primary(type="submit") Update Song

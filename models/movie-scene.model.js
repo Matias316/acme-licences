@@ -10,11 +10,14 @@ module.exports = (sequelize, DataTypes) => {
       },
       movieEndTime: {
         type: DataTypes.STRING
+      },
+      movieId: {
+        type: DataTypes.INTEGER
       }
     });
   
     MovieScene.associate = (models) => {
-        MovieScene.belongsTo(models.movie);
+        MovieScene.belongsTo(models.movie, {foreignKey: 'movieId', as: 'movie'});
       };
 
     return MovieScene;

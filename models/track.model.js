@@ -10,15 +10,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       songEndTime: {
         type: DataTypes.STRING
+      },
+      movieId: {
+        type: DataTypes.INTEGER
+      },
+      songId: {
+        type: DataTypes.INTEGER
       }
     });
 
     Track.associate = (models) => {
-      Track.belongsTo(models.movie);
-    };
-
-    Track.associate = (models) => {
-      Track.belongsTo(models.song);
+      Track.belongsTo(models.movie, {foreignKey: 'movieId'});
+      Track.belongsTo(models.song, {foreignKey: 'songId'});
+      Track.hasMany(models.trackEvent, {as: 'events'});
     };
   
     return Track;

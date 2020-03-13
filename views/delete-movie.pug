@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+  div.container
+    h2 Delete Movie
+
+    div.content
+    //- TODO methods different to get/post not working on form.!! 
+    form#formDeleteSong(name="deletemovie",method="delete",action="/api/movies/" + movieId)
+        p
+            button.btn.btn-primary(type="submit") Delete Movie
+
+
+            

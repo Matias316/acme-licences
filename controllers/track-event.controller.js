@@ -1,44 +1,42 @@
-const Track = require("../models").Track;
+const TrackEvent = require("../models").TrackEvent;
 module.exports = {
   create(req, res) {
-  return Track.create({ 
-    songStartTime: req.body.songStartTime,
-    songEndTime: req.body.songEndTime,
-    movieId: req.body.movieId,
-    songId: req.body.songId
+  return TrackEvent.create({ 
+    description: req.body.description
   })
-  .then(track => res.status(201).send(track))
+  
+  .then(trackEvent => res.status(201).send(trackEvent))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
-  Track.findAll()
-  .then(tracks => res.send(tracks))
+  TrackEvent.findAll()
+  .then(trackEvents => res.send(trackEvents))
   .catch(error => res.status(400).send(error));
 },
 
 getById(req, res) {
   const id = req.params.id;
 
-  Track.findByPk(id)
-  .then(track => res.send(track))
+  TrackEvent.findByPk(id)
+  .then(trackEvent => res.send(trackEvent))
   .catch(error => res.status(400).send(error));
 },
 
 update(req, res) {
   const id = req.params.id;
 
-  Track.update(req.body, {
+  TrackEvent.update(req.body, {
       where: { id: id }
     })
   .then(num => {
       if (num == 1) {
         res.send({
-          message: "Track updated successfully."
+          message: "TrackEvent updated successfully."
         });
       } else {
         res.send({
-          message: `Cannot update Track with id=${id}.`
+          message: `Cannot update TrackEvent with id=${id}.`
         });
       }
     })
@@ -48,17 +46,17 @@ update(req, res) {
 delete(req, res) {
   const id = req.params.id;
 
-  Track.destroy( {
+  TrackEvent.destroy( {
       where: { id: id }
     })
   .then(num => {
       if (num == 1) {
         res.send({
-          message: "Track deleted successfully."
+          message: "TrackEvent deleted successfully."
         });
       } else {
         res.send({
-          message: `Cannot delete Track with id=${id}.`
+          message: `Cannot delete TrackEvent with id=${id}.`
         });
       }
     })
