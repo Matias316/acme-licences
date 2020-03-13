@@ -83,6 +83,7 @@ module.exports = (app) => {
     app.post('/api/tracks', trackController.create);
     app.get('/api/tracks', trackController.getAll);
     app.get('/api/tracks/:id', trackController.getById);
+    app.get('/api/tracks/:songId', trackController.getBySong);
     app.put('/api/tracks/:id', trackController.update);
     app.delete('/api/tracks/:id', trackController.delete);
 
@@ -107,6 +108,7 @@ module.exports = (app) => {
     app.post('/api/trackEvents', trackEventController.create);
     app.get('/api/trackEvents', trackEventController.getAll);
     app.get('/api/trackEvents/:id', trackEventController.getById);
+    app.get('/api/trackEvents/:trackId', trackEventController.getByTrack);
     app.put('/api/trackEvents/:id', trackEventController.update);
     app.delete('/api/trackEvents/:id', trackEventController.delete);
 

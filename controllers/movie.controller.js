@@ -63,16 +63,4 @@ delete(req, res) {
     .catch(error => res.status(400).send(error));
 }
 
-/* TO-DO
-addScene()
-updateScene()
-deleteScene()
-getScenes()
-
-addTrack()
-updateTrack()
-deleteTrack()
-getTracks()
-*/
-
 };

@@ -10,12 +10,15 @@ module.exports = (sequelize, DataTypes) => {
       },
       trackId: {
         type: DataTypes.INTEGER
-      }      
+      },
+      statusId: {
+        type: DataTypes.INTEGER
+      }         
     });
 
     TrackEvent.associate = (models) => {
-      TrackEvent.belongsTo(models.track, {foreignKey: 'trackId', as: 'track'});
-      TrackEvent.hasOne(models.trackEventStatus, {as: 'status'});
+      TrackEvent.belongsTo(models.track, {foreignKey: 'trackId', as: 'trackId'});
+      TrackEvent.belongsTo(models.trackEventStatus, {foreignKey: 'statusId', as: 'statusId'});
     };
  
     return TrackEvent;

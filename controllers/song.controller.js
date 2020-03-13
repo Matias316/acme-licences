@@ -63,13 +63,4 @@ delete(req, res) {
   .catch(error => res.status(400).send(error));
 }
 
-/* TODO
-
-
-addTrack()
-updateTrack()
-deleteTrack()
-getTracks()
-*/
-
 };

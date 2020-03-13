@@ -25,6 +25,15 @@ getById(req, res) {
   .catch(error => res.status(400).send(error));
 },
 
+getBySong(req, res) {
+  Track.findAll({
+    include: [
+        { model: Song, where: { name: req.params.songId } }
+    ]
+  })
+  .then(tracks => res.json(tracks))
+},
+
 update(req, res) {
   const id = req.params.id;
 

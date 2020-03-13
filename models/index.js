@@ -26,7 +26,7 @@ const TrackEvent = TrackEventModel(sequelize, Sequelize);
 const TrackEventStatus = TrackEventStatusModel(sequelize, Sequelize);
 
 //if force: true then DROP TABLE IF EXISTS is executed - Use this in development
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
   .then(() => {
     console.log(`Database & tables will be created if not exists!`)
   })
