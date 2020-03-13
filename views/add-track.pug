@@ -7,19 +7,21 @@ block content
 
     div.content
     form#formAddTrack(name="addtrack",method="post",action="/api/tracks")
+        
+        //TO-DO - movieId is not being assigned with movie.id
         p
-            label(for='movieName') Select movie:
+            label(for='movieOpt') Select movie:
             select
                 each movie in movies
-                    option(name='movieId' value=movie.id) #{movie.title}
+                    option(name='movieId' id='movieId' value=movie.id) #{movie.title}
         p
-            label(for='songName') Select song:
+            label(for='songOpt') Select song:
             select
                 each song in songs
-                    option(name='songId' value=song.id) #{song.title}
+                    option(name='songId' id='songId' value=song.id) #{song.title}
         p
-            input#duration.form-control(type='text', name='songStartTime', placeholder='Song start time')  
+            input#start.form-control(type='text', name='songStartTime', placeholder='Song start time')  
         p
-            input#duration.form-control(type='text', name='songEndTime', placeholder='Song end time')  
+            input#end.form-control(type='text', name='songEndTime', placeholder='Song end time')  
         p
             button.btn.btn-primary(type="submit") Add Track
