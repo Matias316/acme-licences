@@ -9,9 +9,15 @@ module.exports = {
   .catch(error => res.status(400).send(error));
 },
 
+getAllForView(req, res) {
+  Movie.findAll()
+  .then(allMovies => res.render('movie', {movies: allMovies}))
+  .catch(error => res.status(400).send(error));
+},
+
 getAll(req, res) {
   Movie.findAll()
-  .then(movies => res.send(movies))
+  .then(allMovies => res.send(allMovies))
   .catch(error => res.status(400).send(error));
 },
 

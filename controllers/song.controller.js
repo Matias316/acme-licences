@@ -13,9 +13,14 @@ module.exports = {
 
 getAll(req, res) {
   Song.findAll()
+  .then(allSongs => res.send(allSongs))
+  .catch(error => res.status(400).send(error));
+},
+
+getAllForView(req, res) {
+  Song.findAll()
   .then(allSongs => res.render('song', {songs: allSongs}))
   .catch(error => res.status(400).send(error));
-
 },
 
 getById(req, res) {

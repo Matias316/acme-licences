@@ -34,7 +34,7 @@ module.exports = (app) => {
     );
 
     app.get('/songs', (req, res) => {       
-        songController.getAll(req, res);
+        songController.getAllForView(req, res);
     }
     );
 
