@@ -16,6 +16,9 @@ module.exports = (app) => {
     }
     );
 
+    app.get('/addMovie', (req, res) => res.render('add-movie')
+    );
+
     app.get('/updateMovie/:id', (req, res) => {
         movieController.getByIdForView(req, res);
     }
@@ -32,11 +35,6 @@ module.exports = (app) => {
     }
     );
 
-    app.get('/tracks', (req, res) => {
-        trackController.getAllForView(req, res);       
-    }
-    );
-
     app.get('/addSong', (req, res) => res.render('add-song')
     );
 
@@ -47,6 +45,11 @@ module.exports = (app) => {
 
     app.get('/deleteSong/:id', (req, res) => {
         songController.delete(req, res);
+    }
+    );
+
+    app.get('/tracks', (req, res) => {
+        trackController.getAllForView(req, res);       
     }
     );
 
