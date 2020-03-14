@@ -17,6 +17,12 @@ getAll(req, res) {
   .catch(error => res.status(400).send(error));
 },
 
+getAllForView(req, res) {
+  Track.findAll()
+  .then(allTracks => res.render('track', {tracks: allTracks}))
+  .catch(error => res.status(400).send(error));
+},
+
 getById(req, res) {
   const id = req.params.id;
 

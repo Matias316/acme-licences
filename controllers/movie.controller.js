@@ -29,6 +29,14 @@ getById(req, res) {
     .catch(error => res.status(400).send(error));
 },
 
+getByIdForView(req, res) {
+  const id = req.params.id;
+
+  Movie.findByPk(id)
+  .then(movie => res.render('update-movie', {movie : movie}))
+  .catch(error => res.status(400).send(error));
+},
+
 update(req, res) {
     const id = req.params.id;
 

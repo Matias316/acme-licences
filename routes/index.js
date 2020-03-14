@@ -12,18 +12,12 @@ module.exports = (app) => {
     );
 
     app.get('/movies', (req, res) => {
-        //TO-DO async not working
-        //let allMovies = await movieController.getAll();
-        let allMovies = [{ id: 1, title:'Forrest Gump', genre:'Comedy'},{ id: 2, title:'Gladiator', genre:'Action'}];
-        res.render('movie', {movies: allMovies})
+        movieController.getAllForView(req, res);
     }
     );
 
     app.get('/updateMovie/:id', (req, res) => {
-        //TO-DO async not working
-        //let song = await songController.getById(req, res);
-        let movie = { id: 1, title:'Forrest Gump', genre:'Comedy'};
-        res.render('update-movie', {movie: movie});
+        movieController.getByIdForView(req, res);
     }
     );
 
@@ -39,11 +33,7 @@ module.exports = (app) => {
     );
 
     app.get('/tracks', (req, res) => {
-        //TO-DO async not working
-        //let allTracks = await trackController.getAll();
-        let allTracks = [{ id: 1, songStartTime:'00:00', songEndTime:'00:10', movie: { id: 1, title:'Forrest Gump', genre:'Comedy'}, song: { id: 1, title:'Song2', duration:10, owner:'Blur'} },
-        { id: 2, songStartTime:'00:00', songEndTime:'00:10', movie: { id: 1, title:'Forrest Gump', genre:'Comedy'}, song: { id: 2, title:'Crazy', duration:10, owner:'Aerosmith'} }];        
-        res.render('track', {tracks: allTracks})
+        trackController.getAllForView(req, res);       
     }
     );
 
@@ -51,10 +41,7 @@ module.exports = (app) => {
     );
 
     app.get('/updateSong/:id', (req, res) => {
-        //TO-DO async not working
-        //let song = await songController.getById(req, res);
-        let song = { id: 1, title:'Song2', duration:10, owner:'Blur'};
-        res.render('update-song', {song: song});
+        songController.getByIdForView(req, res);
     }
     );
 

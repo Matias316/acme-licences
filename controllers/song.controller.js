@@ -33,6 +33,14 @@ getById(req, res) {
   .catch(error => res.status(400).send(error));
 },
 
+getByIdForView(req, res) {
+  const id = req.params.id;
+
+  Song.findByPk(id)
+  .then(song => res.render('update-song', {song : song}))
+  .catch(error => res.status(400).send(error));
+},
+
 update(req, res) {
   const id = req.params.id;
 
