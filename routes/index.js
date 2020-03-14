@@ -63,6 +63,10 @@ module.exports = (app) => {
     }
     );
 
+    app.get('/deleteTrack/:id', (req, res) => {
+        trackController.delete(req, res);
+    }
+    );
 
     /* These methods are the APIs */
 
