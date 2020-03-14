@@ -23,7 +23,7 @@ module.exports = (app) => {
 
     app.get('/deleteMovie/:id', (req, res) => {
         var id = req.params.id;
-        res.render('delete-movie', {movieId : id});
+        movieController.delete(req,res);
     }
     );
 
@@ -46,8 +46,7 @@ module.exports = (app) => {
     );
 
     app.get('/deleteSong/:id', (req, res) => {
-        var id = req.params.id;
-        res.render('delete-song', {songId : id});
+        songController.delete(req, res);
     }
     );
 
