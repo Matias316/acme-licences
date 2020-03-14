@@ -11,16 +11,21 @@ module.exports = {
   .catch(error => res.status(400).send(error));
 },
 
-async getAll(req, res) {
-  const allSongs = await Song.findAll();
-  res.send(allSongs);
+getAll(req, res) {
+  Song.findAll()
+  .then(allSongs => res.render('song', {songs: allSongs}))
+  .catch(error => res.status(400).send(error));
+
 },
 
-async getById(req, res) {
+getById(req, res) {
   const id = req.params.id;
 
- const song = await Song.findByPk(id);
-  res.send(song);
+  Song.findByPk(id)
+ .then(song => {
+    res.send(song);
+  })
+  .catch(error => res.status(400).send(error));
 },
 
 update(req, res) {

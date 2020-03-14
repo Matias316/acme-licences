@@ -33,11 +33,8 @@ module.exports = (app) => {
     }
     );
 
-    app.get('/songs', (req, res) => {
-        //TO-DO async not working
-        //let allSongs = await songController.getAll();
-        let allSongs = [{ id: 1, title:'Song2', duration:10, owner:'Blur'},{ id: 2, title:'Crazy', duration:10, owner:'Aerosmith'}];
-        res.render('song', {songs: allSongs})
+    app.get('/songs', (req, res) => {       
+        songController.getAll(req, res);
     }
     );
 
