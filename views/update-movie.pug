@@ -6,8 +6,7 @@ block content
     h2 Update Movie
 
     div.content
-    //- TODO methods different to get/post not working on form.!! 
-    form#formUpdateMovie(name="updatemovie",method="put",action="/api/movies/" + movie.id)
+    form#formUpdateMovie(name="updatemovie",method="post",action="/updateMovie/" + movie.id)
         p
             input#title.form-control(type='text', name='title', value=movie.title)
         p

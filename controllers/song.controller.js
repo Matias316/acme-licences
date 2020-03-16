@@ -72,6 +72,24 @@ update(req, res) {
   .catch(error => res.status(400).send(error));
 },
 
+updateForView(req, res) {
+  const id = req.params.id;
+
+  Song.update(req.body, {
+      where: { id: id }
+    })
+  .then(num => {
+      if (num == 1) {
+        res.redirect('/songs')
+      } else {
+        res.send({
+          message: `Cannot update Song with id=${id}.`
+        });
+      }
+    })
+  .catch(error => res.status(400).send(error));
+},
+
 delete(req, res) {
   const id = req.params.id;
 

@@ -7,10 +7,11 @@ const trackEventStatusController = require("../controllers").trackEventStatus;
 
 module.exports = (app) => {
 
-    /* These get methods are used to create the views*/
+    /* These get methods are used to create the views */
     app.get('/', (req, res) => res.render('home')
     );
 
+    /* Movies views */
     app.get('/movies', (req, res) => {
         movieController.getAllForView(req, res);
     }
@@ -29,12 +30,18 @@ module.exports = (app) => {
     }
     );
 
+    app.post('/updateMovie/:id', (req, res) => {
+        movieController.updateForView(req, res);
+    }
+    );
+
     app.get('/deleteMovie/:id', (req, res) => {
         var id = req.params.id;
         movieController.delete(req,res);
     }
     );
 
+    /* Songs views */
     app.get('/songs', (req, res) => {       
         songController.getAllForView(req, res);
     }
@@ -53,11 +60,17 @@ module.exports = (app) => {
     }
     );
 
+    app.post('/updateSong/:id', (req, res) => {
+        songController.updateForView(req, res);
+    }
+    );
+
     app.get('/deleteSong/:id', (req, res) => {
         songController.delete(req, res);
     }
     );
 
+    /* Tracks views */
     app.get('/tracks', (req, res) => {
         trackController.getAllForView(req, res);       
     }
@@ -79,7 +92,6 @@ module.exports = (app) => {
     );
 
     /* These methods are the APIs */
-
     app.post('/api/tracks', trackController.create);
     app.get('/api/tracks', trackController.getAll);
     app.get('/api/tracks/:id', trackController.getById);
