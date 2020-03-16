@@ -78,6 +78,24 @@ delete(req, res) {
       }
     })
   .catch(error => res.status(400).send(error));
+},
+
+deleteForView(req, res) {
+  const id = req.params.id;
+
+  Track.destroy( {
+      where: { id: id }
+    })
+  .then(num => {
+      if (num == 1) {
+        res.redirect('/tracks');
+      } else {
+        res.send({
+          message: `Cannot delete Track with id=${id}.`
+        });
+      }
+    })
+  .catch(error => res.status(400).send(error));
 }
 
 };

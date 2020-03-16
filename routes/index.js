@@ -87,7 +87,7 @@ module.exports = (app) => {
     );
 
     app.get('/deleteTrack/:id', (req, res) => {
-        trackController.delete(req, res);
+        trackController.deleteForView(req, res);
     }
     );
 
