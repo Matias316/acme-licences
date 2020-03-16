@@ -103,6 +103,24 @@ delete(req, res) {
         }
       })
     .catch(error => res.status(400).send(error));
+},
+
+deleteForView(req, res) {
+  const id = req.params.id;
+
+  Movie.destroy( {
+      where: { id: id }
+    })
+  .then(num => {
+      if (num == 1) {
+        res.redirect('/movies')
+      } else {
+        res.send({
+          message: `Cannot delete Movie with id=${id}.`
+        });
+      }
+    })
+  .catch(error => res.status(400).send(error));
 }
 
 };

@@ -108,6 +108,24 @@ delete(req, res) {
       }
     })
   .catch(error => res.status(400).send(error));
+},
+
+deleteForView(req, res) {
+  const id = req.params.id;
+
+  Song.destroy( {
+      where: { id: id }
+    })
+  .then(num => {
+      if (num == 1) {
+        res.redirect('/songs')
+      } else {
+        res.send({
+          message: `Cannot delete Song with id=${id}.`
+        });
+      }
+    })
+  .catch(error => res.status(400).send(error));
 }
 
 };
