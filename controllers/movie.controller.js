@@ -9,6 +9,16 @@ module.exports = {
   .catch(error => res.status(400).send(error));
 },
 
+createForView(req, res) {
+  return Movie.create({ 
+    title: req.body.title,
+    genre:  req.body.genre
+  })
+  
+  .then(res.redirect('/movies'))
+  .catch(error => res.status(400).send(error));
+},
+
 getAllForView(req, res) {
   Movie.findAll()
   .then(allMovies => res.render('movie', {movies: allMovies}))

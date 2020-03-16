@@ -11,6 +11,17 @@ module.exports = {
   .catch(error => res.status(400).send(error));
 },
 
+createForView(req, res) {
+  return Song.create({ 
+    title: req.body.title,
+    duration: req.body.duration,
+    owner: req.body.owner
+  })
+  
+  .then(res.redirect('/songs'))
+  .catch(error => res.status(400).send(error));
+},
+
 getAll(req, res) {
   Song.findAll()
   .then(allSongs => res.send(allSongs))
