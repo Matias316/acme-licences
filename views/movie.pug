@@ -5,7 +5,7 @@ block content
     h2 Acme-Licenses - Movies
     div.content
       table.table
-        a.btn.btn-primary( href="/addMovie" ) Add Movie
+        a.btn.btn-primary( href="/movies/addMovie" ) Add Movie
         thead
           tr
             th Title
@@ -17,5 +17,5 @@ block content
                 td #{movie.title}
                 td #{movie.genre}
                 td 
-                  a.btn.btn-primary( href="/updateMovie/" + movie.id ) Update
-                  a.btn.btn-primary( href="/deleteMovie/" + movie.id ) Delete 
+                  a.btn.btn-primary( href="/movies/updateMovie/" + movie.id ) Update
+                  a.btn.btn-primary( href="/movies/deleteMovie/" + movie.id ) Delete 

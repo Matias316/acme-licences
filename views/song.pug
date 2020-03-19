@@ -5,7 +5,7 @@ block content
     h2 Acme-Licenses - Songs
     div.content
       table.table
-        a.btn.btn-primary( href="/addSong" ) Add song
+        a.btn.btn-primary( href="/songs/addSong" ) Add song
         thead
           tr
             th Title
@@ -19,6 +19,6 @@ block content
                 td #{song.duration}
                 td #{song.owner}
                 td 
-                  a.btn.btn-primary( href="/updateSong/" + song.id ) Update
-                  a.btn.btn-primary( href="/deleteSong/" + song.id ) Delete
+                  a.btn.btn-primary( href="/songs/updateSong/" + song.id ) Update
+                  a.btn.btn-primary( href="/songs/deleteSong/" + song.id ) Delete
 

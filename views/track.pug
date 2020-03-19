@@ -5,7 +5,7 @@ block content
     h2 Acme-Licenses - Tracks
     div.content
       table.table
-        a.btn.btn-primary( href="/addTrack" ) Add track
+        a.btn.btn-primary( href="/tracks/addTrack" ) Add track
         thead
           tr
             th Movie
@@ -21,6 +21,6 @@ block content
                 td #{track.songStartTime}
                 td #{track.songEndTime}
                 td 
-                  a.btn.btn-primary( href="/updateTrack/" + track.id ) Update
-                  a.btn.btn-primary( href="/deleteTrack/" + track.id ) Delete
-                  a.btn.btn-primary( href="/trackEvents/" + track.id ) Events
+                  a.btn.btn-primary( href="/tracks/updateTrack/" + track.id ) Update
+                  a.btn.btn-primary( href="/tracks/deleteTrack/" + track.id ) Delete
+                  a.btn.btn-primary( href="/tracks/trackEvents/" + track.id ) Events
