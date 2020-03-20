@@ -10,6 +10,7 @@ const TrackEventStatusModel = require("./track-event-status.model")
 const sequelize = new Sequelize( {  
   dialect: DbConfig.dialect,
   storage: DbConfig.storage,
+  logging: false,
   pool: {
     max: DbConfig.pool.max,
     min: DbConfig.pool.min,
@@ -26,11 +27,8 @@ const TrackEvent = TrackEventModel(sequelize, Sequelize);
 const TrackEventStatus = TrackEventStatusModel(sequelize, Sequelize);
 
 //if force: true then DROP TABLE IF EXISTS is executed - Use this in development
-sequelize.sync({ force: false })
-  .then(() => {
-    console.log(`Database & tables will be created if not exists!`)
-  })
-  
+sequelize.sync({ force: false });
+
 module.exports = {
     Track,
     Song,
