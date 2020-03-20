@@ -4,10 +4,8 @@ const request = supertest(app);
 
 describe('Movies endpoints', () => {
 
-  test('Test GET all movies', () => {
-      request.get('/api/movies').then(movies => {
-        expect(movies).toHaveLength(1);
+  it('Test GET all movies', async () => {
+        const response = await request.get('/api/movies');
+        expect(response.status).toBe(200);
       });
-         
-    });
 });
