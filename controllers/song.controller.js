@@ -7,7 +7,7 @@ module.exports = {
     owner: req.body.owner
   })
   
-  .then(song => res.status(201).send(song))
+  .then(song => res.status(201).send({song : song}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -24,13 +24,13 @@ createForView(req, res) {
 
 getAll(req, res) {
   Song.findAll()
-  .then(allSongs => res.send(allSongs))
+  .then(allSongs => res.status(200).send({songs : allSongs}))
   .catch(error => res.status(400).send(error));
 },
 
 getAllForView(req, res) {
   Song.findAll()
-  .then(allSongs => res.render('song', {songs: allSongs}))
+  .then(allSongs => res.status(200).render('song', {songs: allSongs}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -39,7 +39,7 @@ getById(req, res) {
 
   Song.findByPk(id)
  .then(song => {
-    res.send(song);
+    res.status(200).send({song : song});
   })
   .catch(error => res.status(400).send(error));
 },
@@ -48,7 +48,7 @@ getByIdForView(req, res) {
   const id = req.params.id;
 
   Song.findByPk(id)
-  .then(song => res.render('update-song', {song : song}))
+  .then(song => res.status(200).render('update-song', {song : song}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -60,11 +60,11 @@ update(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "Song updated successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update Song with id=${id}.`
         });
       }
@@ -82,7 +82,7 @@ updateForView(req, res) {
       if (num == 1) {
         res.redirect('/songs')
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update Song with id=${id}.`
         });
       }
@@ -98,11 +98,11 @@ delete(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "Song deleted successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete Song with id=${id}.`
         });
       }
@@ -120,7 +120,7 @@ deleteForView(req, res) {
       if (num == 1) {
         res.redirect('/songs')
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete Song with id=${id}.`
         });
       }

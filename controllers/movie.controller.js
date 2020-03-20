@@ -5,7 +5,7 @@ module.exports = {
     title: req.body.title,
     genre:  req.body.genre
   })  
-  .then(movie => res.status(201).send(movie))
+  .then(movie => res.status(201).send({movie : movie}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -27,7 +27,7 @@ getAllForView(req, res) {
 
 getAll(req, res) {
   Movie.findAll()
-  .then(allMovies => res.status(200).send(allMovies))
+  .then(allMovies => res.status(200).send({movies : allMovies}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -35,7 +35,7 @@ getById(req, res) {
     const id = req.params.id;
 
     Movie.findByPk(id)
-    .then(movie => res.status(200).send(movie))
+    .then(movie => res.status(200).send({movie : movie}))
     .catch(error => res.status(400).send(error));
 },
 
@@ -55,11 +55,11 @@ update(req, res) {
       })
     .then(num => {
         if (num == 1) {
-          res.send({
+          res.status(200).send({
             message: "Movie updated successfully."
           });
         } else {
-          res.send({
+          res.status(500).send({
             message: `Cannot update Movie with id=${id}.`
           });
         }
@@ -77,7 +77,7 @@ updateForView(req, res) {
       if (num == 1) {
         res.redirect('/movies')
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update Movie with id=${id}.`
         });
       }
@@ -93,11 +93,11 @@ delete(req, res) {
       })
     .then(num => {
         if (num == 1) {
-          res.send({
+          res.status(200).send({
             message: "Movie deleted successfully."
           });
         } else {
-          res.send({
+          res.status(500).send({
             message: `Cannot delete Movie with id=${id}.`
           });
         }
@@ -115,7 +115,7 @@ deleteForView(req, res) {
       if (num == 1) {
         res.redirect('/movies')
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete Movie with id=${id}.`
         });
       }
