@@ -21,13 +21,13 @@ createForView(req, res) {
 
 getAllForView(req, res) {
   Movie.findAll()
-  .then(allMovies => res.render('movie', {movies: allMovies}))
+  .then(allMovies => res.status(200).render('movie', {movies: allMovies}))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
   Movie.findAll()
-  .then(allMovies => res.send(allMovies))
+  .then(allMovies => res.status(200).send(allMovies))
   .catch(error => res.status(400).send(error));
 },
 
@@ -35,7 +35,7 @@ getById(req, res) {
     const id = req.params.id;
 
     Movie.findByPk(id)
-    .then(movie => res.send(movie))
+    .then(movie => res.status(200).send(movie))
     .catch(error => res.status(400).send(error));
 },
 
@@ -43,7 +43,7 @@ getByIdForView(req, res) {
   const id = req.params.id;
 
   Movie.findByPk(id)
-  .then(movie => res.render('update-movie', {movie : movie}))
+  .then(movie => res.status(200).render('update-movie', {movie : movie}))
   .catch(error => res.status(400).send(error));
 },
 
