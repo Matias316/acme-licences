@@ -13,8 +13,8 @@ apis.get('/', (req, res) => {
 
 apis.post('/tracks', trackController.create);
 apis.get('/tracks', trackController.getAll);
-apis.get('/tracks/:id', trackController.getById);
-apis.get('/tracks/:songId', trackController.getBySong);
+apis.get('/tracks/id/:id', trackController.getById);
+apis.get('/tracks/songId/:songId', trackController.getBySong);
 apis.put('/tracks/:id', trackController.update);
 apis.delete('/tracks/:id', trackController.delete);
 

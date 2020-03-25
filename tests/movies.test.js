@@ -16,7 +16,7 @@ describe('Movies endpoints', () => {
       expect(movieCreatedResponse.body.movie).toHaveProperty('id')
       expect(movieCreatedResponse.body.movie.genre).toBe('Comedy');
 
-    //Test UPDATE
+    //Test GET
     const movieGetResponse = await request.get(`/api/movies/${movieCreatedResponse.body.movie.id}`);
 
     expect(movieGetResponse.status).toBe(200)

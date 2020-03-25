@@ -7,19 +7,19 @@ module.exports = {
     movieId: req.body.movieId,
     songId: req.body.songId
   })
-  .then(track => res.status(201).send(track))
+  .then(track => res.status(201).send({track:track}))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
   Track.findAll()
-  .then(tracks => res.send(tracks))
+  .then(tracks => res.status(200).send({tracks:tracks}))
   .catch(error => res.status(400).send(error));
 },
 
 getAllForView(req, res) {
   Track.findAll()
-  .then(allTracks => res.render('track', {tracks: allTracks}))
+  .then(allTracks => res.status(200).render('track', {tracks: allTracks}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -27,17 +27,15 @@ getById(req, res) {
   const id = req.params.id;
 
   Track.findByPk(id)
-  .then(track => res.send(track))
+  .then(track => res.status(200).send({track:track}))
   .catch(error => res.status(400).send(error));
 },
 
 getBySong(req, res) {
   Track.findAll({
-    include: [
-        { model: Song, where: { name: req.params.songId } }
-    ]
+    where: { songId: req.params.songId } 
   })
-  .then(tracks => res.json(tracks))
+  .then(tracks => res.status(200).send({tracks:tracks}))
 },
 
 update(req, res) {
@@ -48,11 +46,11 @@ update(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "Track updated successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update Track with id=${id}.`
         });
       }
@@ -68,11 +66,11 @@ delete(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "Track deleted successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete Track with id=${id}.`
         });
       }
@@ -88,9 +86,9 @@ deleteForView(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.redirect('/tracks');
+        res.status(200).redirect('/tracks');
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete Track with id=${id}.`
         });
       }
