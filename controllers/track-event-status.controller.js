@@ -2,7 +2,8 @@ const TrackEventStatus = require("../models").TrackEventStatus;
 module.exports = {
   create(req, res) {
   return TrackEventStatus.create({ 
-    type: req.body.type
+    type: req.body.type,
+    trackEventId: req.body.trackEventId
   })
   
   .then(trackEventStatus => res.status(201).send({trackEventStatus:trackEventStatus}))
