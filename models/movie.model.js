@@ -13,10 +13,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     });
   
-    Movie.associate = (models) => {
-      Movie.belongsToMany(models.song, {through: 'track', foreignKey: 'movieId'});
-      Movie.hasMany(models.movie-scene);
-    };
-
     return Movie;
   };

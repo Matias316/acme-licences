@@ -16,10 +16,5 @@ module.exports = (sequelize, DataTypes) => {
       }         
     });
 
-    TrackEvent.associate = (models) => {
-      TrackEvent.belongsTo(models.track, {foreignKey: 'trackId'});
-      TrackEvent.hasOne(models.trackEventStatus);
-    };
- 
     return TrackEvent;
   };

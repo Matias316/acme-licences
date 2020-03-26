@@ -18,12 +18,6 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER
       }
     });
-
-    Track.associate = (models) => {
-      Track.belongsTo(models.movie, {foreignKey: 'movieId'});
-      Track.belongsTo(models.song, {foreignKey: 'songId'});
-      Track.hasMany(models.trackEvent);
-    };
-  
+ 
     return Track;
   };

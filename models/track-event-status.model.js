@@ -8,6 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       type: {
         type: DataTypes.ENUM('INIT','UNDER-DISCUSSION','ACCEPTED','DENIED','CANCELLED'),
         defaultValue: 'INIT'
+      },
+      trackEventId: {
+        type: DataTypes.INTEGER
       }
     })
     ;
