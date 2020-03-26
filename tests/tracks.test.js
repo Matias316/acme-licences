@@ -4,7 +4,7 @@ const request = supertest(app);
 
 describe('Tracks endpoints', () => {
 
-  it('Test PUT - GET by Id - Update - Delete track', async () => {
+  it('Test PUT - GET by Id - Get by Song - Update - Delete track', async () => {
     //Test PUT
     const trackCreatedResponse = await request.post('/api/tracks')
     .send({
@@ -25,7 +25,7 @@ describe('Tracks endpoints', () => {
     expect(trackGetResponse.body.track.songStartTime).toBe('00:00');
 
     //Test GET by Song
-    const trackGetResponseBySong = await request.get(`/api/tracks/songId/${trackCreatedResponse.body.track.songId}`);
+    const trackGetResponseBySong = await request.get(`/api/tracks/song/${trackCreatedResponse.body.track.songId}`);
 
     expect(trackGetResponseBySong.status).toBe(200)
     expect(trackGetResponseBySong.body.tracks[0].songStartTime).toBe('00:00');

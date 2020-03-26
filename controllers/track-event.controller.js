@@ -7,13 +7,13 @@ module.exports = {
     statusId: req.body.statusId
   })
   
-  .then(trackEvent => res.status(201).send(trackEvent))
+  .then(trackEvent => res.status(201).send({trackEvent:trackEvent}))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
   TrackEvent.findAll()
-  .then(trackEvents => res.send(trackEvents))
+  .then(trackEvents => res.status(200).send({trackEvents:trackEvents}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -21,19 +21,20 @@ getById(req, res) {
   const id = req.params.id;
 
   TrackEvent.findByPk(id)
-  .then(trackEvent => res.send(trackEvent))
+  .then(trackEvent => res.status(200).send({trackEvent:trackEvent}))
   .catch(error => res.status(400).send(error));
 },
 
 getByTrack(req, res) {
   TrackEvent.findAll({
-    include: [
-        { model: Track, where: { name: req.params.trackId } }
-    ]
-  })
-  .then(trackEvents => res.json(trackEvents))
+     where: { trackId: req.params.trackId } 
+    }    
+  )
+  .then(trackEvents => res.status(200).send({trackEvents:trackEvents}))
+  .catch(error => res.status(400).send(error));
 },
 
+//TODO - Should we return updated objects instead?
 update(req, res) {
   const id = req.params.id;
 
@@ -42,11 +43,11 @@ update(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "TrackEvent updated successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update TrackEvent with id=${id}.`
         });
       }
@@ -62,11 +63,11 @@ delete(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "TrackEvent deleted successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete TrackEvent with id=${id}.`
         });
       }

@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   
     MovieScene.associate = (models) => {
-        MovieScene.belongsTo(models.movie, {foreignKey: 'movieId', as: 'movie'});
+        MovieScene.belongsTo(models.movie, {foreignKey: 'movieId'});
       };
 
     return MovieScene;

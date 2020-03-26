@@ -14,7 +14,7 @@ apis.get('/', (req, res) => {
 apis.post('/tracks', trackController.create);
 apis.get('/tracks', trackController.getAll);
 apis.get('/tracks/id/:id', trackController.getById);
-apis.get('/tracks/songId/:songId', trackController.getBySong);
+apis.get('/tracks/song/:songId', trackController.getBySong);
 apis.put('/tracks/:id', trackController.update);
 apis.delete('/tracks/:id', trackController.delete);
 
@@ -32,14 +32,15 @@ apis.delete('/movies/:id', movieController.delete);
 
 apis.post('/movieScenes', movieSceneController.create);
 apis.get('/movieScenes', movieSceneController.getAll);
-apis.get('/movieScenes/:id', movieSceneController.getById);
+apis.get('/movieScenes/id/:id', movieSceneController.getById);
+apis.get('/movieScenes/movie/:movieId', movieSceneController.getByMovie);
 apis.put('/movieScenes/:id', movieSceneController.update);
 apis.delete('/movieScenes/:id', movieSceneController.delete);
 
 apis.post('/trackEvents', trackEventController.create);
 apis.get('/trackEvents', trackEventController.getAll);
-apis.get('/trackEvents/:id', trackEventController.getById);
-apis.get('/trackEvents/:trackId', trackEventController.getByTrack);
+apis.get('/trackEvents/id/:id', trackEventController.getById);
+apis.get('/trackEvents/track/:trackId', trackEventController.getByTrack);
 apis.put('/trackEvents/:id', trackEventController.update);
 apis.delete('/trackEvents/:id', trackEventController.delete);
 

@@ -36,6 +36,7 @@ getBySong(req, res) {
     where: { songId: req.params.songId } 
   })
   .then(tracks => res.status(200).send({tracks:tracks}))
+  .catch(error => res.status(400).send(error));
 },
 
 update(req, res) {
