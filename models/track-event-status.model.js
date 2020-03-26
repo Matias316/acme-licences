@@ -12,9 +12,5 @@ module.exports = (sequelize, DataTypes) => {
     })
     ;
 
-    TrackEventStatus.associate = (models) => {
-        TrackEventStatus.hasMany(models.trackEvent, {as: 'statuses'} );
-      };
-
     return TrackEventStatus;
   };

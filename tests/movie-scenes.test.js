@@ -54,4 +54,5 @@ describe('Movie scenes endpoints', () => {
         const response = await request.get('/api/movieScenes');
         expect(response.status).toBe(200);
       });
+      
 });

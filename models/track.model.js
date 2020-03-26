@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     Track.associate = (models) => {
       Track.belongsTo(models.movie, {foreignKey: 'movieId'});
       Track.belongsTo(models.song, {foreignKey: 'songId'});
-      Track.hasMany(models.trackEvent, {as: 'events'});
+      Track.hasMany(models.trackEvent);
     };
   
     return Track;

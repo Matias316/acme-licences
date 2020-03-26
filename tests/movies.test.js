@@ -45,4 +45,5 @@ describe('Movies endpoints', () => {
         const response = await request.get('/api/movies');
         expect(response.status).toBe(200);
       });
+      
 });

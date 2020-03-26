@@ -55,4 +55,5 @@ describe('Track events endpoints', () => {
         const response = await request.get('/api/trackEvents');
         expect(response.status).toBe(200);
       });
+      
 });

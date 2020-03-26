@@ -54,5 +54,6 @@ describe('Tracks endpoints', () => {
   it('Test GET all tracks', async () => {
         const response = await request.get('/api/tracks');
         expect(response.status).toBe(200);
-      });
+      })
+      
 });

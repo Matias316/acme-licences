@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
     TrackEvent.associate = (models) => {
       TrackEvent.belongsTo(models.track, {foreignKey: 'trackId'});
-      TrackEvent.belongsTo(models.trackEventStatus, {foreignKey: 'statusId'});
+      TrackEvent.hasOne(models.trackEventStatus);
     };
  
     return TrackEvent;

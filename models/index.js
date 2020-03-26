@@ -26,7 +26,8 @@ const MovieScene = MovieSceneModel(sequelize, Sequelize);
 const TrackEvent = TrackEventModel(sequelize, Sequelize);
 const TrackEventStatus = TrackEventStatusModel(sequelize, Sequelize);
 
-//if force: true then DROP TABLE IF EXISTS is executed - Use this in development
+//if force: true then DROP TABLE IF EXISTS is executed - Use this only in development
+//If force: true the jest tests will failed because every execution starts a new thread and DB tables are dropped between each execution
 sequelize.sync({ force: false });
 
 module.exports = {

@@ -5,13 +5,13 @@ module.exports = {
     type: req.body.type
   })
   
-  .then(trackEventStatus => res.status(201).send(trackEventStatus))
+  .then(trackEventStatus => res.status(201).send({trackEventStatus:trackEventStatus}))
   .catch(error => res.status(400).send(error));
 },
 
 getAll(req, res) {
   TrackEventStatus.findAll()
-  .then(trackEventStatuses => res.send(trackEventStatuses))
+  .then(trackEventStatuses => res.status(200).send({trackEventStatuses:trackEventStatuses}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -19,7 +19,7 @@ getById(req, res) {
   const id = req.params.id;
 
   TrackEventStatus.findByPk(id)
-  .then(trackEventStatus => res.send(trackEventStatus))
+  .then(trackEventStatus => res.status(200).send({trackEventStatus:trackEventStatus}))
   .catch(error => res.status(400).send(error));
 },
 
@@ -31,11 +31,11 @@ update(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "TrackEventStatus updated successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot update TrackEventStatus with id=${id}.`
         });
       }
@@ -51,11 +51,11 @@ delete(req, res) {
     })
   .then(num => {
       if (num == 1) {
-        res.send({
+        res.status(200).send({
           message: "TrackEventStatus deleted successfully."
         });
       } else {
-        res.send({
+        res.status(500).send({
           message: `Cannot delete TrackEventStatus with id=${id}.`
         });
       }
