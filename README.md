@@ -106,10 +106,10 @@ Track event created with id = 2
 
 1) Get all tracks from a song
 
-GET     http://localhost:3000/api/tracks?songId=1
+GET     http://localhost:3000/api/tracks/song/1
 
 
 1) Get all tracks events from a track
 
-GET     http://localhost:3000/api/trackEvents?trackId=1 
+GET     http://localhost:3000/api/trackEvents/track/1 
 
