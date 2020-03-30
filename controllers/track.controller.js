@@ -1,4 +1,6 @@
 const Track = require("../models").Track;
+const Song = require("../models").Song;
+
 module.exports = {
   create(req, res) {
   return Track.create({ 
@@ -32,9 +34,13 @@ getById(req, res) {
 },
 
 getBySong(req, res) {
-  Track.findAll({
-    where: { songId: req.params.songId } 
-  })
+
+Track.findAll({
+  where: { songId: req.params.songId }, 
+  include: {
+    model: Song
+   }
+   })
   .then(tracks => res.status(200).send({tracks:tracks}))
   .catch(error => res.status(400).send(error));
 },
