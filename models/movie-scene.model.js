@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       movieId: {
         type: DataTypes.INTEGER
       }
+    },
+    { 
+      timestamps: false
     });
   
     return MovieScene;

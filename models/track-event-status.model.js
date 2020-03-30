@@ -12,8 +12,10 @@ module.exports = (sequelize, DataTypes) => {
       trackEventId: {
         type: DataTypes.INTEGER
       }
-    })
-    ;
+    },
+    { 
+      timestamps: false
+    });
 
     return TrackEventStatus;
   };

@@ -17,6 +17,9 @@ module.exports = (sequelize, DataTypes) => {
       songId: {
         type: DataTypes.INTEGER
       }
+    },
+    { 
+      timestamps: false
     });
  
     return Track;

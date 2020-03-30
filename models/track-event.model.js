@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       statusId: {
         type: DataTypes.INTEGER
       }         
+    },
+    { 
+      timestamps: false
     });
 
     return TrackEvent;

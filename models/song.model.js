@@ -14,6 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       owner: {
         type: DataTypes.STRING
       }
+    },
+    { 
+      timestamps: false
     });
   
     return Song;
