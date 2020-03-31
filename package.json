@@ -31,6 +31,8 @@
     "supertest": "^4.0.2"
   },
   "jest": {
+    "verbose": true,
+    "testRegex": "./tests/.*.js$",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
