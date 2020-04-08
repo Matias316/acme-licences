@@ -18,8 +18,6 @@ Start the server: npm start
 
 # Usage
 
-Currently the front-end is not working but the API rest can be tested with Postman or curl requests:
-
 // Creations
 
 1) Create Movies:
