@@ -19,12 +19,6 @@ getAll(req, res) {
   .catch(error => res.status(400).send(error));
 },
 
-getAllForView(req, res) {
-  Track.findAll()
-  .then(allTracks => res.status(200).render('track', {tracks: allTracks}))
-  .catch(error => res.status(400).send(error));
-},
-
 getById(req, res) {
   const id = req.params.id;
 
@@ -76,24 +70,6 @@ delete(req, res) {
         res.status(200).send({
           message: "Track deleted successfully."
         });
-      } else {
-        res.status(500).send({
-          message: `Cannot delete Track with id=${id}.`
-        });
-      }
-    })
-  .catch(error => res.status(400).send(error));
-},
-
-deleteForView(req, res) {
-  const id = req.params.id;
-
-  Track.destroy( {
-      where: { id: id }
-    })
-  .then(num => {
-      if (num == 1) {
-        res.status(200).redirect('/tracks');
       } else {
         res.status(500).send({
           message: `Cannot delete Track with id=${id}.`
